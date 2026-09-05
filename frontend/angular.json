@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "frontend": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "styles": [],
+            "scripts": []
+          }
+        },
+        "serve": {
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "options": { "browserTarget": "frontend:build" }
+}
+      }
+    }
+  },
+  "cli": {
+    "analytics": "5b50e304-e4a4-4b7a-8f2f-be10947d4264"
+  }
+}

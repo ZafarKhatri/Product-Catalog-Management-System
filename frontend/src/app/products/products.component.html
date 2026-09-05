@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>🛒 Product Catalog</h1>
+
+  <!-- Alert Message -->
+  <div *ngIf="message" class="alert">{{ message }}</div>
+
+  <!-- Add Product Form -->
+  <div class="card form-card">
+    <h2>Add New Product</h2>
+    <div class="form-group">
+      <input [(ngModel)]="newProduct.name" placeholder="Product Name *" class="input" />
+      <input [(ngModel)]="newProduct.price" type="number" placeholder="Price (₹) *" class="input" />
+      <input [(ngModel)]="newProduct.category" placeholder="Category" class="input" />
+      <input [(ngModel)]="newProduct.imageUrl" placeholder="Image URL (optional)" class="input" />
+      <button (click)="addProduct()" class="btn btn-primary">Add Product</button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <!-- Product List -->
+  <div class="product-grid">
+    <div *ngFor="let product of products" class="card product-card">
+      <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" class="product-img" />
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="price">₹{{ product.price }}</p>
+        <span class="badge">{{ product.category }}</span>
+      </div>
+      <button (click)="deleteProduct(product._id!)" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+
+  <p *ngIf="products.length === 0 && !isLoading" class="empty-msg">No products found. Add one above!</p>
+</div>
